@@ -36,8 +36,11 @@ Unfortunately, the command `docker build` doesn't support such an option, so you
 
     # Please wait until the service "oracle-xe" has been launched
     $ docker logs <your-container-id>
+    Starting Oracle Net Listener.
+    Starting Oracle Database 11g Express Edition instance.
     ...
     SQL> Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
     $ sqlplus test/test@${DOCKER_HOST}:1521/XE
 
     # SSH login with the password "root:docker"
