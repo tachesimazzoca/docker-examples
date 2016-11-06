@@ -8,5 +8,3 @@
 
 /.vagrant
 /Vagrantfile
-/bootstrap.sh
-/chef/ssh_config
