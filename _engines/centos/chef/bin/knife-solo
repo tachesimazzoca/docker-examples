@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd `dirname ${0}`/..
+
+if [ ! -f ssh_config ];
+then
+  echo "The file ./ssh_config doesn't exist."
+  echo "Add 'Host default' entry to ./ssh_config."
+  exit 1
+fi
+
+bundle exec knife solo "${1}" default -F ssh_config

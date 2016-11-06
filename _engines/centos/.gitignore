@@ -1,0 +1,12 @@
+*~
+
+/.ruby-version
+
+/.bundle
+/Gemfile.lock
+/vendor
+
+/.vagrant
+/Vagrantfile
+/bootstrap.sh
+/chef/ssh_config
