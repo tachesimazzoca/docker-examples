@@ -1,3 +1,3 @@
 .PHONY: vbox
 vbox:
-	@sudo chef-client -z -j nodes/vbox.json
+	@sudo chef-client -z -N vbox -j nodes/vbox.json
