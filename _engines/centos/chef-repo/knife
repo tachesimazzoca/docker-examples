@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if (bundle exec knife -v > /dev/null 2>&1);
+then
+  cmd="bundle exec knife"
+else
+  cmd="knife"
+fi
+
+$cmd "$@"

@@ -1,0 +1,7 @@
+{
+  "name": "docker-engine",
+  "run_list": [
+    "recipe[base_packages]",
+    "recipe[docker]"
+  ]
+}

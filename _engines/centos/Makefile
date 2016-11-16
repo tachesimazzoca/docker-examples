@@ -10,7 +10,7 @@ clean:
 
 .PHONY: gems
 gems:
-	@if [ -d vendor ]; then bundle update; else bundle install --path vendor/bundle; fi
+	@bundle install --path vendor/bundle
 
 .PHONY: test
 test:
