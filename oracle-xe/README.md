@@ -15,15 +15,15 @@ Oracle XE requires 2GB swap space. If you use the `docker-machine` on MacOS or W
 
 ## Build an image
 
-The setup command `/etc/init.d/oracle-xe configure` will access `/proc` files. To accomplish this, the `--priviledged` option is required on runtime.
+The setup command `/etc/init.d/oracle-xe configure` will access `/proc` files. To accomplish this, the `--privileged` option is required on runtime.
 
 * https://docs.docker.com/v1.11/engine/reference/run/#runtime-privilege-and-linux-capabilities
 
 Unfortunately, the command `docker build` doesn't support such an option, so you need to prepare a configured image by running a container. This example `daemon/Dockerfile` expects the configured image should be tagged as `local/oraxle-xe-configred:latest`.
 
-    # Prepare local/oracle-xe-configured by running a container with --privilege option
+    # Prepare local/oracle-xe-configured by running a container with --privileged option
     $ docker build -t local/oracle-xe-configured configure
-    $ docker run --priviledged -it --name <oracle-xe-configured> local/oracle-xe-configured
+    $ docker run --privileged -it --name <oracle-xe-configured> local/oracle-xe-configured
     $ docker commit <oracle-xe-configured> local/oracle-xe-configured
 
     # And then build an image from "local/oracle-xe-configured:latest"
