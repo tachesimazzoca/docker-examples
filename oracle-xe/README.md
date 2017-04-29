@@ -37,7 +37,7 @@ You can define `/var/lib/boot2docker/bootlocal.sh` as a startup script.
 
 The setup command `/etc/init.d/oracle-xe configure` will access `/proc` files. To accomplish this, the `--privileged` option is required on runtime.
 
-* https://docs.docker.com/v1.11/engine/reference/run/#runtime-privilege-and-linux-capabilities
+* https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
 
 Unfortunately, the command `docker build` doesn't support such an option, so you need to prepare a configured image by running a container. This example `daemon/Dockerfile` expects the configured image should be tagged as `local/oraxle-xe-configred:latest`.
 
