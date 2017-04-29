@@ -11,7 +11,27 @@ Make sure that the Linux version `oracle-xe-11.2.0-1.0.x86_64.rpm` is located at
     $ md5sum configure/files/oracle-xe-11.2.0-1.0.x86_64.rpm
     3371612d47e1a0a4cc8f53470b1f4fe3  configure/files/oracle-xe-11.2.0-1.0.x86_64.rpm
 
-Oracle XE requires 2GB swap space. If you use the `docker-machine` on MacOS or Windows, you might need to create a new swap space manually in the machine, where your docker host is running.
+Oracle XE requires more than 2GB swap space. If you use boot2docker (Docker Toolbox), you might need to create a new swap space manually in your docker machine.
+
+Make sure that any changes outside of the `/var/lib/docker` and `/var/lib/boot2docker` will be lost after rebooting boot2docker VM. In other words, there is no point in adding swap files into `tmpfs` or modifying `/etc/fstab` for automount.
+
+You can define `/var/lib/boot2docker/bootlocal.sh` as a startup script.
+
+    $ docker-machine ssh
+    $ sudo su -
+
+    $ dd if=/dev/zero of=/var/lib/boot2docker/swap bs=1M count=2048
+    $ mkswap /var/lib/boot2docker/swap
+    $ swapon /var/lib/boot2docker/swap
+
+    $ cat /var/lib/boot2docker/bootlocal.sh
+    #!/bin/sh
+
+    swapon /var/lib/boot2docker/swap
+
+    $ chmod 755 /var/lib/boot2docker/bootlocal.sh
+
+ See [boot2docker FAQ](https://github.com/boot2docker/boot2docker/blob/master/doc/FAQ.md#local-customisation-with-persistent-partition) to get more details.
 
 ## Build an image
 
