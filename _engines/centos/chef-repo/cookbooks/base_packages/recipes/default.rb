@@ -1,4 +1,5 @@
 [
+  'yum-utils',
   'vim-enhanced',
   'git'
 ].each do |pkg|

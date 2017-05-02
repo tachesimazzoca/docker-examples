@@ -1,13 +1,12 @@
-cookbook_file '/etc/yum.repos.d/docker.repo' do
-  source 'etc/yum.repos.d/docker.repo'
+cookbook_file '/etc/yum.repos.d/docker-ce.repo' do
+  source 'etc/yum.repos.d/docker-ce.repo'
   owner 'root'
   group 'root'
   mode 0644
 end
 
-package 'docker-engine' do
+package 'docker-ce' do
   action :install
-  options "--enablerepo=dockerrepo"
 end
 
 service 'docker' do
@@ -22,4 +21,13 @@ user 'docker' do
   group 'docker'
   manage_home true
   action :create
+end
+
+bash "ensure /usr/local/bin/docker-compose is installed" do
+  ver = node['docker_compose']['version'] || '1.12.0'
+  code <<-EOH
+    curl -L https://github.com/docker/compose/releases/download/#{ver}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    chmod 755 /usr/local/bin/docker-compose
+  EOH
+  not_if "test -f /usr/local/bin/docker-compose"
 end

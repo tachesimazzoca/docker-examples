@@ -1,17 +1,10 @@
 .PHONY: all
 all:
-	@cp skel/* .
+	@cp skel/Vagrantfile .
+	@cp skel/boostrap.sh .
 
 .PHONY: clean
 clean:
 	@rm -rf .vagrant
-	@rm -rf Vagrantfile
-	@rm -rf .bundle vendor
-
-.PHONY: gems
-gems:
-	@bundle install --path vendor/bundle
-
-.PHONY: test
-test:
-	@bundle exec rake spec:vbox
+	@rm -f Vagrantfile
+	@rm -f bootstrap.sh
