@@ -1,0 +1,6 @@
+*~
+
+/.vagrant
+/Vagrantfile
+/bootstrap.sh
+/*.log
