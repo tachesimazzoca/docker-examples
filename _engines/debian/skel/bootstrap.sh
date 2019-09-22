@@ -3,7 +3,7 @@
 set -e
 
 # install base packages
-sudo apt-get install -y --no-install-recommends \
+apt-get update && apt-get install -y --no-install-recommends \
      apt-transport-https \
      ca-certificates \
      curl \
