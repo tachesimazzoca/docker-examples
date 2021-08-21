@@ -5,9 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "debian/stretch64"
-  config.vm.box_url = "https://vagrantcloud.com/debian/stretch64"
-  config.vm.box_version = "9.6.0"
+  config.vm.box = "generic/debian9"
+  config.vm.box_version = "3.0.6"
 
   config.vm.network "private_network", ip: "192.168.33.201"
   config.ssh.insert_key = false

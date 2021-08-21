@@ -8,7 +8,9 @@ apt-get update && apt-get install -y --no-install-recommends \
      ca-certificates \
      curl \
      gnupg2 \
-     software-properties-common
+     software-properties-common \
+     ntp \
+     vim git
 
 # add vagrant user
 id_vagrant=$(id -u vagrant || true)
@@ -37,5 +39,5 @@ apt-get update && apt-get install -y --no-install-recommends docker-ce
 adduser --disabled-password --gecos "" --ingroup docker docker
 
 # install docker-compose
-curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.26.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod 755 /usr/local/bin/docker-compose
